@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Models.Models;
 using VehicleAPI.Models;
 using VehicleAPI.Services;
 
@@ -13,6 +14,12 @@ namespace VehicleAPI.Controllers
         public VehicleController(VehicleServices vehicleService)
         {
             _vehicleServices = vehicleService;
+        }
+
+        [HttpGet("cars")]
+        public IEnumerable<Vehicle> GetCars()
+        {
+            return _vehicleServices.GetCars().OfType<Car>();
         }
 
         [HttpGet("cars/{color}")]
@@ -34,10 +41,9 @@ namespace VehicleAPI.Controllers
         }
 
         [HttpPost("cars/{id}/headlights")]
-        public string TurnOnOffCarHeadlights(int id, [FromBody] bool on)
+        public Car TurnOnOffCarHeadlights(int id, [FromBody] bool on)
         {
-            _vehicleServices.TurnOnOffCarHeadlights(id, on);
-            return "OK";
+            return _vehicleServices.TurnOnOffCarHeadlights(id, on);
         }
 
         [HttpDelete("cars/{id}")]

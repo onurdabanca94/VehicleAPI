@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Business.Abstracts
         IEnumerable<Car> GetCarsByColor(string color);
         IEnumerable<Bus> GetBusesByColor(string color);
         IEnumerable<Boat> GetBoatsByColor(string color);
-        void TurnOnOffCarHeadlights(int carId, bool on);
+        Car TurnOnOffCarHeadlights(int carId, bool on);
         void DeleteCar(int carId);
     }
 }

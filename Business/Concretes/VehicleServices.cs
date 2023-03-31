@@ -1,4 +1,5 @@
 ﻿using Business.Abstracts;
+using Models.Models;
 using System.Collections.Generic;
 using System.Linq;
 using VehicleAPI.Models;
@@ -20,6 +21,7 @@ namespace VehicleAPI.Services
                 new Car { Id = "2", Color = "blue", Wheels = 4, HeadlightsOn = true},
                 new Car { Id = "3", Color = "black", Wheels = 4, HeadlightsOn = false},
                 new Car { Id = "4", Color = "white", Wheels = 4, HeadlightsOn = true},
+                new Car { Id = "5", Color = "white", Wheels = 4, HeadlightsOn = true},
             };
 
             _buses = new List<Bus>()
@@ -28,6 +30,7 @@ namespace VehicleAPI.Services
                 new Bus() { Id = "2", Color = "blue" },
                 new Bus() { Id = "3", Color = "black" },
                 new Bus() { Id = "4", Color = "white" },
+                new Bus() { Id = "5", Color = "white" },
             };
 
             _boats = new List<Boat>()
@@ -36,6 +39,7 @@ namespace VehicleAPI.Services
                 new Boat() { Id = "2", Color = "blue" },
                 new Boat() { Id = "3", Color = "black" },
                 new Boat() { Id = "4", Color = "white" },
+                new Boat() { Id = "5", Color = "white" },
             };
         }
 
@@ -54,13 +58,14 @@ namespace VehicleAPI.Services
             return _boats.Where(b => b.Color.Equals(color, StringComparison.OrdinalIgnoreCase));
         }
 
-        public void TurnOnOffCarHeadlights(int carId, bool on)
+        public Car TurnOnOffCarHeadlights(int carId, bool on)
         {
             var car = _cars.FirstOrDefault(c => c.Id == carId.ToString());
             if (car != null) 
             {
                 car.HeadlightsOn = on;    
             }
+            return car;
         }
 
         public void DeleteCar(int carId)
@@ -70,6 +75,11 @@ namespace VehicleAPI.Services
             {
                 _cars.Remove(car);
             }
+        }
+
+        public IEnumerable<Car> GetCars() 
+        {
+            return _cars;
         }
     }
 }
