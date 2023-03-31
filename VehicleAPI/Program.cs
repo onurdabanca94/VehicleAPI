@@ -10,6 +10,7 @@ namespace VehicleAPI
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<VehicleServices>();
             var app = builder.Build();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -22,10 +23,10 @@ namespace VehicleAPI
             app.MapControllers();
             app.Run();
         }
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddScoped<VehicleServices>();
-            services.AddControllers();
-        }
+        //public void ConfigureServices(IServiceCollection services)
+        //{
+        //    services.AddScoped<VehicleServices>();
+        //    services.AddControllers();
+        //}
     }
 }
