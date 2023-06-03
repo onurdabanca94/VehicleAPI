@@ -13,6 +13,7 @@ namespace Business.Abstracts
         IEnumerable<Car> GetCarsByColor(string color);
         IEnumerable<Bus> GetBusesByColor(string color);
         IEnumerable<Boat> GetBoatsByColor(string color);
+        IEnumerable<Bicycle> GetBicyclesByColor(string color);
         Car TurnOnOffCarHeadlights(int carId, bool on);
         void DeleteCar(int carId);
     }

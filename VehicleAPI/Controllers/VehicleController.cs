@@ -40,6 +40,11 @@ namespace VehicleAPI.Controllers
             return _vehicleServices.GetBoatsByColor(color).OfType<Boat>();
         }
 
+        [HttpGet("bicycles/{color}")]
+        public IEnumerable<Vehicle> GetBicyclesByColor(string color) {
+            return _vehicleServices.GetBicyclesByColor(color).OfType<Bicycle>();
+        }
+
         [HttpPost("cars/{id}/headlights")]
         public Car TurnOnOffCarHeadlights(int id, [FromBody] bool on)
         {
